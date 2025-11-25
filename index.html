@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AUTOGEN</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Intro splash with logo video -->
+    <div id="intro-overlay">
+        <video
+            id="intro-video"
+            class="intro-video"
+            autoplay
+            muted
+            playsinline
+        >
+            <source src="autogen_logo.mp4" type="video/mp4" />
+            Your browser does not support video.
+        </video>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 id="app-title">AUTOGEN</h1>
+            <p class="tagline">Turn your workout into real electrical energy.</p>
+        </header>
+
+        <!-- Login/Register Section -->
+        <div id="auth-section" class="card">
+            <h2>Welcome</h2>
+            <div class="menu">
+                <button id="show-register" class="btn-secondary">Create Account</button>
+                <button id="show-login" class="btn-primary">Login</button>
+            </div>
+
+            <!-- Register -->
+            <div id="register-form" class="hidden">
+                <h3>Register</h3>
+
+                <div class="form-group inline-2">
+                    <div>
+                        <label for="reg-firstname">First Name</label>
+                        <input type="text" id="reg-firstname" />
+                    </div>
+                    <div>
+                        <label for="reg-lastname">Last Name</label>
+                        <input type="text" id="reg-lastname" />
+                    </div>
+                </div>
+
+                <div class="form-group inline-2">
+                    <div>
+                        <label for="reg-age">Age</label>
+                        <input type="number" id="reg-age" min="1" />
+                    </div>
+                    <div>
+                        <label for="reg-pincode">Pincode</label>
+                        <input type="text" id="reg-pincode" />
+                    </div>
+                </div>
+
+                <div class="form-group inline-2">
+                    <div>
+                        <label for="reg-weight">Weight</label>
+                        <div class="inline-input-with-select">
+                            <input type="number" id="reg-weight" min="1" />
+                            <select id="reg-weight-unit">
+                                <option value="kg" selected>kg</option>
+                                <option value="lb">lb</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="reg-height">Height</label>
+                        <div class="inline-input-with-select">
+                            <input type="number" id="reg-height" min="1" />
+                            <select id="reg-height-unit">
+                                <option value="cm">cm</option>
+                                <option value="in">inches</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-dob">Date of Birth</label>
+                    <input type="date" id="reg-dob" />
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" />
+                    <small>Must contain uppercase, lowercase, number, and special character.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password-confirm">Confirm Password</label>
+                    <input type="password" id="reg-password-confirm" />
+                </div>
+
+                <button id="register-btn" class="btn-primary">Register</button>
+                <div id="register-message" class="message hidden"></div>
+            </div>
+
+            <!-- Login -->
+            <div id="login-form">
+                <h3>Login</h3>
+                <div class="form-group">
+                    <label for="login-id">User ID</label>
+                    <input type="text" id="login-id" />
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" />
+                </div>
+                <button id="login-btn" class="btn-primary">Login</button>
+                <div id="login-message" class="message hidden"></div>
+            </div>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="user-dashboard" class="hidden">
+            <div class="menu">
+                <button id="show-profile" class="btn-secondary">Overview</button>
+                <button id="show-account" class="btn-secondary">Energy Session</button>
+                <button id="show-log" class="btn-secondary">History</button>
+                <button id="show-house" class="btn-secondary">Home Target</button>
+                <button id="show-updates" class="btn-secondary">Updates</button>
+                <button id="logout-btn" class="btn-danger">Logout</button>
+                <button id="show-feedback" class="btn-secondary">Feedback</button>
+            </div>
+
+            <!-- Overview / Profile -->
+            <div id="profile-section" class="card">
+                <h2>Overview</h2>
+                <div id="profile-info" class="profile-info">
+                    <!-- profile tiles -->
+                </div>
+
+                <h3 class="section-title">Analytics</h3>
+                <div id="analytics-summary" class="analytics-grid">
+                    <!-- analytics tiles -->
+                </div>
+
+                <h3 class="section-title">BMI Details</h3>
+                <div id="bmi-extra" class="house-summary">
+                    <!-- BMI extra info -->
+                </div>
+            </div>
+
+            <!-- History -->
+            <div id="log-section" class="card hidden">
+                <h2>Activity History</h2>
+                <p class="section-subtitle">
+                    Every session you log shows up here with date, time, energy and calories.
+                </p>
+                <div id="log-entries">
+                    <!-- log entries -->
+                </div>
+            </div>
+
+            <!-- Energy Session / Simulation -->
+            <div id="account-section" class="card hidden">
+                <h2>Energy Simulation</h2>
+                <p class="section-subtitle">
+                    Simulate your workout: we estimate power, energy, bill savings, CO₂ reduction and calories burned.
+                </p>
+
+                <div class="form-group">
+                    <label for="session-rpm">Pedaling Speed (RPM)</label>
+                    <input type="number" id="session-rpm" min="10" max="200" placeholder="e.g. 70" />
+                </div>
+
+                <div class="form-group">
+                    <label for="session-minutes">Duration (minutes)</label>
+                    <input type="number" id="session-minutes" min="1" max="300" placeholder="e.g. 30" />
+                </div>
+
+                <div class="form-group">
+                    <label for="session-effort">Effort Level</label>
+                    <select id="session-effort">
+                        <option value="low">Low (warm-up ride)</option>
+                        <option value="medium" selected>Medium (normal workout)</option>
+                        <option value="high">High (intense training)</option>
+                    </select>
+                </div>
+
+                <button id="earn-submit" class="btn-primary">Simulate & Log Session</button>
+
+                <div id="session-result" class="analytics-grid session-result hidden">
+                    <!-- filled by JS -->
+                </div>
+            </div>
+
+            <!-- Home Target Section -->
+            <div id="house-section" class="card hidden">
+                <h2>Home Energy Target</h2>
+                <p class="section-subtitle">
+                    Either enter your monthly bill units, or just tell us how many fans, ACs, and fridges you use.
+                </p>
+
+                <div class="form-group">
+                    <label>Household Appliances (rough estimate)</label>
+                    <div class="inline-3">
+                        <div>
+                            <label for="fans-count">Fans</label>
+                            <input type="number" id="fans-count" min="0" />
+                        </div>
+                        <div>
+                            <label for="acs-count">ACs</label>
+                            <input type="number" id="acs-count" min="0" />
+                        </div>
+                        <div>
+                            <label for="fridges-count">Fridges</label>
+                            <input type="number" id="fridges-count" min="0" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group inline-2">
+                    <div>
+                        <label for="bill-kwh">Monthly Units (kWh)</label>
+                        <input type="number" id="bill-kwh" min="0" placeholder="e.g. 250" />
+                    </div>
+                    <div>
+                        <label for="bill-amount">Monthly Bill (₹)</label>
+                        <input type="number" id="bill-amount" min="0" placeholder="optional" />
+                    </div>
+                </div>
+
+                <button id="save-target-btn" class="btn-primary">Save Target</button>
+                <div id="house-message" class="message hidden"></div>
+
+                <div id="house-summary" class="house-summary">
+                    <!-- summary -->
+                </div>
+            </div>
+
+            <!-- Updates Section -->
+            <div id="updates-section" class="card hidden">
+                <h2>Updates</h2>
+                <p class="section-subtitle">
+                    Stay tuned for new features, performance tips, and energy challenges.
+                </p>
+                <ul class="updates-list">
+                    <li><strong>v0.1</strong> – Energy simulation & analytics dashboard.</li>
+                    <li><strong>v0.2</strong> – Home energy target & monthly goal tracking.</li>
+                    <li><strong>Next</strong> – Smart leaderboard & social challenges.</li>
+                </ul>
+            </div>
+
+            <!-- Feedback Section -->
+            <div id="feedback-section" class="card hidden">
+                <h2>Feedback</h2>
+                <p class="section-subtitle">
+                    Tell us what you love, what you hate, and what you want next in AUTOGEN.
+                </p>
+                <div class="form-group">
+                    <label for="feedback-text">Your feedback</label>
+                    <textarea
+                        id="feedback-text"
+                        rows="4"
+                        style="width: 100%; border-radius: 10px; padding: 8px; background:#020617; color:#e5e7eb; border:1px solid rgba(51,65,85,0.9);"
+                    ></textarea>
+                </div>
+                <button id="feedback-submit" class="btn-primary">Submit Feedback</button>
+                <div id="feedback-message" class="message hidden"></div>
+            </div>
+
+            <!-- Developer Mode (hidden, tap AUTOGEN 7 times) -->
+            <div id="dev-mode-section" class="card hidden">
+                <h2>Developer Mode</h2>
+
+                <button id="export-user-csv" class="btn-primary dev-btn">
+                    Download Current User Log (CSV)
+                </button>
+                <button id="export-all-users-csv" class="btn-secondary dev-btn">
+                    Download All Users (CSV)
+                </button>
+
+                <!-- Dev internal tabs -->
+                <div class="menu" style="margin-top:10px;">
+                    <button id="dev-show-users" class="btn-secondary">Users</button>
+                    <button id="dev-show-usage" class="btn-secondary">User Analytics</button>
+                    <button id="dev-show-feedback" class="btn-secondary">Feedback</button>
+                </div>
+
+                <!-- Users table (default) -->
+                <div id="dev-users-section">
+                    <h3>Users</h3>
+                    <table id="dev-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>User ID</th>
+                                <th>Name</th>
+                                <th>Total Energy (kWh)</th>
+                                <th>Total Calories</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dev-table-body">
+                            <!-- rows -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- User analytics (per user stats) -->
+                <div id="dev-usage-section" class="hidden">
+                    <h3>User Analytics</h3>
+                    <div class="form-group">
+                        <label for="dev-user-select">Select User</label>
+                        <select id="dev-user-select"></select>
+                    </div>
+                    <div id="dev-user-analytics" class="house-summary">
+                        <!-- analytics shown here -->
+                    </div>
+                </div>
+
+                <!-- Feedback list -->
+                <div id="dev-feedback-section-dev" class="hidden">
+                    <h3>Feedback Received</h3>
+                    <div id="dev-feedback-list">
+                        <!-- feedback entries -->
+                    </div>
+                </div>
+            </div> <!-- end dev-mode-section -->
+        </div> <!-- end user-dashboard -->
+    </div> <!-- end container -->
+
+    <script src="script.js"></script>
+</body>
+</html>
